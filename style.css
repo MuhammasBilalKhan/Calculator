@@ -1,0 +1,101 @@
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #ff7eb3, #ff758c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            width: 400px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .calculator .display {
+            width: 100%;
+            height: 70px;
+            background: #f7f7f7;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 2rem;
+            text-align: right;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: #333;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .calculator button {
+            background: linear-gradient(to right, #ff6e68, #ff758c);
+            border: none;
+            border-radius: 15px;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 110, 104, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .calculator button:hover {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            box-shadow: 0 6px 15px rgba(255, 110, 104, 0.5);
+        }
+
+        .calculator button:active {
+            transform: scale(0.95);
+        }
+
+        .calculator button.clear {
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+        }
+
+        .calculator button.clear:hover {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+        }
+
+        .calculator button.equal {
+            background: linear-gradient(to right, #1cc88a, #17a673);
+            grid-column: span 2;
+            height: 90px;
+        }
+
+        .calculator button.equal:hover {
+            background: linear-gradient(to right, #17a673, #1cc88a);
+        }
+
+        .calculator button.plus {
+            background: linear-gradient(to right, #ffa502, #ff7f50);
+            grid-column: span 2;
+            height: 90px;
+        }
+
+        .calculator button.plus:hover {
+            background: linear-gradient(to right, #ff7f50, #ffa502);
+        }
+
+        .calculator button.percentage {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+
+        .calculator button.percentage:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }

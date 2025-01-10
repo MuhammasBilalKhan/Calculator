@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="calculator">
+        <div class="title">Calculator by Muhammad Bilal Khan</div>
+        <input type="text" id="display" class="display" disabled>
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="clear">C</button>
+            <button onclick="appendOperator('%')" class="percentage">%</button>
+            <button onclick="appendOperator('/')">÷</button>
+            <button onclick="appendOperator('*')">×</button>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendOperator('-')">−</button>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="backspace()" class="backspace">←</button>
+            <button onclick="appendValue('0')" style="grid-column: span 3;">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button class="equal" onclick="calculate()" style="grid-column: span 4;">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById("display");
+        let lastInput = ""; 
+
+        function appendValue(value) {
+            display.value += value;
+            lastInput = "number"; 
+        }
+
+        function appendOperator(operator) {
+            if (operator === "%") {
+                if (lastInput === "number") {
+                    display.value = eval(display.value + "/100");
+                }
+                return;
+            }
+            if (lastInput === "operator") {
+                display.value = display.value.slice(0, -1) + operator;
+            } else {
+                display.value += operator;
+            }
+            lastInput = "operator"; 
+        }
+
+        function clearDisplay() {
+            display.value = "";
+            lastInput = ""; 
+        }
+
+        function backspace() {
+            display.value = display.value.slice(0, -1); 
+            lastInput = display.value.slice(-1).match(/[0-9]/) ? "number" : "operator"; 
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value); 
+                lastInput = "number";
+            } catch (error) {
+                display.value = "Error";
+                lastInput = ""; 
+            }
+        }
+    </script>
+</body>
+</html>
